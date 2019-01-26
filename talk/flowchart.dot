@@ -1,0 +1,17 @@
+digraph G {
+    subgraph cluster_0 {
+        "Dataset of labeled images" -> "Preprocessing" -> "Tensor" -> "Model\nLearning" -> "Serialized\nweights";
+        label = "Training";
+        "Preprocessing"[shape=Mdiamond, style=filled, color=grey];
+        "Model\nLearning"[shape=Mdiamond, style=filled, color=grey];
+        color=blue;
+    }
+
+    subgraph cluster_1 {
+        "Dataset of unknown images" -> 0 -> "Predicted\nlabels" -> "Kaggle" -> "MAP@5\nScore";
+        label = "Prediction";
+        0[label="Learned\nModel", shape=Mdiamond, style=filled, color=grey];
+        "Kaggle"[shape=Mdiamond, style=filled, color=grey];
+        color=red;
+    }
+}
